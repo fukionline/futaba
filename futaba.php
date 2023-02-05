@@ -1,8 +1,8 @@
 <?
-#futaba.php‚Ìmysql”ÅB
-#ì‚è‚©‚¯‚Å‚·B
-#‚»‚Ì‚Ü‚Ü‚Å‚à“®‚«‚Ü‚·‚ªAÀ—p‚É‚Í‘Ï‚¦‚È‚¢‚Å‚µ‚å‚¤B
-#–¢À‘•‚Ì‚à‚Ì¨ƒTƒ€ƒlƒCƒ‹‚Ì—L–³A‰æ‘œŒŸ¸A‰æ‘œ‚¾‚¯Á‚µ‚½‚ÉƒƒO‚Ö‚Ì”½‰fA‚İ‚ñ‚È‚Åíœƒ{ƒ^ƒ“
+#futaba.phpã®mysqlç‰ˆã€‚
+#ä½œã‚Šã‹ã‘ã§ã™ã€‚
+#ãã®ã¾ã¾ã§ã‚‚å‹•ãã¾ã™ãŒã€å®Ÿç”¨ã«ã¯è€ãˆãªã„ã§ã—ã‚‡ã†ã€‚
+#æœªå®Ÿè£…ã®ã‚‚ã®â†’ã‚µãƒ ãƒã‚¤ãƒ«ã®æœ‰ç„¡ã€ç”»åƒæ¤œæŸ»ã€ç”»åƒã ã‘æ¶ˆã—ãŸæ™‚ã«ãƒ­ã‚°ã¸ã®åæ˜ ã€ã¿ã‚“ãªã§å‰Šé™¤ãƒœã‚¿ãƒ³
 
 extract($_POST,EXTR_SKIP);
 extract($_GET,EXTR_SKIP);
@@ -10,47 +10,47 @@ extract($_COOKIE,EXTR_SKIP);
 $upfile_name=$_FILES["upfile"]["name"];
 $upfile=$_FILES["upfile"]["tmp_name"];
 
-define(SQLLOG, 'imglog');		//ƒƒOƒtƒ@ƒCƒ‹–¼(ƒe[ƒuƒ‹–¼)
-define(IMG_DIR, 'src/');		//‰æ‘œ•Û‘¶ƒfƒBƒŒƒNƒgƒŠBfutaba.php‚©‚çŒ©‚Ä
-define(THUMB_DIR,'thumb/');		//ƒTƒ€ƒlƒCƒ‹•Û‘¶ƒfƒBƒŒƒNƒgƒŠ
-define(TITLE, '‚±‚Ì‰æ‘œŒf¦”Â‚Í‚l‚™‚r‚p‚k‚ğg‚Á‚Ä‚¢‚Ü‚·B');		//ƒ^ƒCƒgƒ‹i<title>‚ÆTOPj
-define(HOME,  '../');			//uƒz[ƒ€v‚Ö‚ÌƒŠƒ“ƒN
-define(MAX_KB, '100');			//“Še—e—Ê§ŒÀ KBiphp‚Ìİ’è‚É‚æ‚è2M‚Ü‚Å
-define(MAX_W,  '100');			//“ŠeƒTƒCƒY•i‚±‚êˆÈã‚Íwidth‚ğk¬
-define(MAX_H,  '100');			//“ŠeƒTƒCƒY‚‚³
-define(PAGE_DEF, '10');			//ˆêƒy[ƒW‚É•\¦‚·‚é‹L–
-define(LOG_MAX,  '200');		//ƒƒOÅ‘ås”
-define(ADMIN_PASS, 'Œf¦”Â‚ÌŠÇ—ƒpƒXƒ[ƒh‚ğ‚±‚±‚É‘‚­');	//ŠÇ—ÒƒpƒX
-define(RE_COL, '789922');               //„‚ª•t‚¢‚½‚ÌF
-define(PHP_SELF, 'futaba.php');	//‚±‚ÌƒXƒNƒŠƒvƒg–¼
-define(PHP_SELF2, 'futaba.htm');	//“ü‚èŒûƒtƒ@ƒCƒ‹–¼
-define(PHP_EXT, '.htm');		//1ƒy[ƒWˆÈ~‚ÌŠg’£q
-define(RENZOKU, '15');			//˜A‘±“Še•b”
-define(RENZOKU2, '30');		//‰æ‘œ˜A‘±“Še•b”
-define(MAX_RES, '10');		//‹­§sageƒŒƒX”
-define(USE_THUMB, 1);		//ƒTƒ€ƒlƒCƒ‹‚ğì‚é ‚·‚é:1 ‚µ‚È‚¢:0
-define(PROXY_CHECK, 1);		//proxy‚Ì‘‚İ‚ğ§ŒÀ‚·‚é y:1 n:0
-define(DISP_ID, 0);		//ID‚ğ•\¦‚·‚é ‹­§:2 ‚·‚é:1 ‚µ‚È‚¢:0
-define(BR_CHECK, 15);		//‰üs‚ğ—}§‚·‚és” ‚µ‚È‚¢:0
+define(SQLLOG, 'imglog');		//ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«å(ãƒ†ãƒ¼ãƒ–ãƒ«å)
+define(IMG_DIR, 'src/');		//ç”»åƒä¿å­˜ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã€‚futaba.phpã‹ã‚‰è¦‹ã¦
+define(THUMB_DIR,'thumb/');		//ã‚µãƒ ãƒã‚¤ãƒ«ä¿å­˜ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
+define(TITLE, 'ã“ã®ç”»åƒæ²ç¤ºæ¿ã¯ï¼­ï½™ï¼³ï¼±ï¼¬ã‚’ä½¿ã£ã¦ã„ã¾ã™ã€‚');		//ã‚¿ã‚¤ãƒˆãƒ«ï¼ˆ<title>ã¨TOPï¼‰
+define(HOME,  '../');			//ã€Œãƒ›ãƒ¼ãƒ ã€ã¸ã®ãƒªãƒ³ã‚¯
+define(MAX_KB, '100');			//æŠ•ç¨¿å®¹é‡åˆ¶é™ KBï¼ˆphpã®è¨­å®šã«ã‚ˆã‚Š2Mã¾ã§
+define(MAX_W,  '100');			//æŠ•ç¨¿ã‚µã‚¤ã‚ºå¹…ï¼ˆã“ã‚Œä»¥ä¸Šã¯widthã‚’ç¸®å°
+define(MAX_H,  '100');			//æŠ•ç¨¿ã‚µã‚¤ã‚ºé«˜ã•
+define(PAGE_DEF, '10');			//ä¸€ãƒšãƒ¼ã‚¸ã«è¡¨ç¤ºã™ã‚‹è¨˜äº‹
+define(LOG_MAX,  '200');		//ãƒ­ã‚°æœ€å¤§è¡Œæ•°
+define(ADMIN_PASS, 'æ²ç¤ºæ¿ã®ç®¡ç†ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’ã“ã“ã«æ›¸ã');	//ç®¡ç†è€…ãƒ‘ã‚¹
+define(RE_COL, '789922');               //ï¼ãŒä»˜ã„ãŸæ™‚ã®è‰²
+define(PHP_SELF, 'futaba.php');	//ã“ã®ã‚¹ã‚¯ãƒªãƒ—ãƒˆå
+define(PHP_SELF2, 'futaba.htm');	//å…¥ã‚Šå£ãƒ•ã‚¡ã‚¤ãƒ«å
+define(PHP_EXT, '.htm');		//1ãƒšãƒ¼ã‚¸ä»¥é™ã®æ‹¡å¼µå­
+define(RENZOKU, '15');			//é€£ç¶šæŠ•ç¨¿ç§’æ•°
+define(RENZOKU2, '30');		//ç”»åƒé€£ç¶šæŠ•ç¨¿ç§’æ•°
+define(MAX_RES, '10');		//å¼·åˆ¶sage!ãƒ¬ã‚¹æ•°
+define(USE_THUMB, 1);		//ã‚µãƒ ãƒã‚¤ãƒ«ã‚’ä½œã‚‹ ã™ã‚‹:1 ã—ãªã„:0
+define(PROXY_CHECK, 1);		//proxyã®æ›¸è¾¼ã¿ã‚’åˆ¶é™ã™ã‚‹ y:1 n:0
+define(DISP_ID, 0);		//IDã‚’è¡¨ç¤ºã™ã‚‹ å¼·åˆ¶:2 ã™ã‚‹:1 ã—ãªã„:0
+define(BR_CHECK, 15);		//æ”¹è¡Œã‚’æŠ‘åˆ¶ã™ã‚‹è¡Œæ•° ã—ãªã„:0
 
 $path = realpath("./").'/'.IMG_DIR;
 ignore_user_abort(TRUE);
-$badstring = array("dummy_string","dummy_string2"); //‹‘â‚·‚é•¶š—ñ
-$badfile = array("dummy","dummy2"); //‹‘â‚·‚éƒtƒ@ƒCƒ‹‚Ìmd5
+$badstring = array("dummy_string","dummy_string2"); //æ‹’çµ¶ã™ã‚‹æ–‡å­—åˆ—
+$badfile = array("dummy","dummy2"); //æ‹’çµ¶ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ã®md5
 
-$badip = array("addr1\\.dummy\\.com","addr2\\.dummy\\.com"); //‹‘â‚·‚éƒzƒXƒg
-$addinfo='<LI>MySQLƒeƒXƒg‚¿‚ã‚¤B‚»‚Ì‚¤‚¿Á‚¦‚Ü‚·B<LI>ƒ\[ƒX‚Í<a href="futaba.php.txt">‚±‚Ì‚Ö‚ñ</a>B';
+$badip = array("addr1\\.dummy\\.com","addr2\\.dummy\\.com"); //æ‹’çµ¶ã™ã‚‹ãƒ›ã‚¹ãƒˆ
+$addinfo='<LI>MySQLãƒ†ã‚¹ãƒˆã¡ã‚…ã†ã€‚ãã®ã†ã¡æ¶ˆãˆã¾ã™ã€‚<LI>ã‚½ãƒ¼ã‚¹ã¯<a href="futaba.php.txt">ã“ã®ã¸ã‚“</a>ã€‚';
 
-if(!$con=mysql_connect("localhost","mysql","‚r‚p‚k‚ÌÚ‘±ƒpƒXƒ[ƒh‚ğ‚±‚±‚É‘‚­")){
-  echo "Ú‘±¸”s";                #ªmysql‚Í‚±‚±‚Å‚ÍDB‚Ìƒ†[ƒU–¼
+if(!$con=mysql_connect("localhost","mysql","ï¼³ï¼±ï¼¬ã®æ¥ç¶šãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’ã“ã“ã«æ›¸ã")){
+  echo "æ¥ç¶šå¤±æ•—";                #â†‘mysqlã¯ã“ã“ã§ã¯DBã®ãƒ¦ãƒ¼ã‚¶å
   exit;
 }
 
-$db_id=mysql_select_db("bbs",$con);  #bbs‚Í‚±‚±‚Å‚ÍDB‚Ì–¼‘O
-  if(!$db_id){echo "mysql_select_db¸”s<br>";}
+$db_id=mysql_select_db("bbs",$con);  #bbsã¯ã“ã“ã§ã¯DBã®åå‰
+  if(!$db_id){echo "mysql_select_dbå¤±æ•—<br>";}
 
 if (!table_exist(SQLLOG)) {
-  echo (SQLLOG."ƒe[ƒuƒ‹‚ğì¬‚µ‚Ü‚·<br>\n");
+  echo (SQLLOG."ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œæˆã—ã¾ã™<br>\n");
   $result = mysql_call("create table ".SQLLOG." (primary key(no),
     index (resto),index (root),index (time),
     no    int not null auto_increment,
@@ -70,10 +70,10 @@ if (!table_exist(SQLLOG)) {
     fsize int,
     root  timestamp,
     resto int)");
-  if(!$result){echo "ƒe[ƒuƒ‹ì¬¸”s<br>";}
+  if(!$result){echo "ãƒ†ãƒ¼ãƒ–ãƒ«ä½œæˆå¤±æ•—<br>";}
 }
 
-/* ‹L–•”•ª */
+/* è¨˜äº‹éƒ¨åˆ† */
 function updatelog($resno=0){
   global $path;
 
@@ -85,16 +85,16 @@ function updatelog($resno=0){
       $find = mysql_fetch_row($result);
       mysql_free_result($result);
     }
-    if(!$find) error("ŠY“–‹L–‚ª‚İ‚Â‚©‚è‚Ü‚¹‚ñ");
+    if(!$find) error("è©²å½“è¨˜äº‹ãŒã¿ã¤ã‹ã‚Šã¾ã›ã‚“");
   }
   if($resno){
-    if(!$treeline=mysql_call("select * from ".SQLLOG." where root>0 and no=".$resno." order by root desc")){echo "sql¸”s4<br>";}
+    if(!$treeline=mysql_call("select * from ".SQLLOG." where root>0 and no=".$resno." order by root desc")){echo "sqlå¤±æ•—4<br>";}
   }else{
-    if(!$treeline=mysql_call("select * from ".SQLLOG." where root>0 order by root desc")){echo "sql¸”s4<br>";}
+    if(!$treeline=mysql_call("select * from ".SQLLOG." where root>0 order by root desc")){echo "sqlå¤±æ•—4<br>";}
   }
 
-  //ÅŒã‚Ì‘‚«‚İ”Ô†
-  if(!$result=mysql_call("select max(no) from ".SQLLOG)){echo "sql¸”s96<br>";}
+  //æœ€å¾Œã®æ›¸ãè¾¼ã¿ç•ªå·
+  if(!$result=mysql_call("select max(no) from ".SQLLOG)){echo "sqlå¤±æ•—96<br>";}
   $row=mysql_fetch_array($result);
   $lastno=(int)$row[0];
   mysql_free_result($result);
@@ -125,65 +125,65 @@ function updatelog($resno=0){
     list($no,$now,$name,$email,$sub,$com,$host,$pwd,$ext,$w,$h,$tim,$time,$md5,$fsize,)=mysql_fetch_row($treeline);
     if(!$no){break;}
 
-    // URL‚Æƒ[ƒ‹‚ÉƒŠƒ“ƒN
+    // URLã¨ãƒ¡ãƒ¼ãƒ«ã«ãƒªãƒ³ã‚¯
     if($email) $name = "<a href=\"mailto:$email\">$name</a>";
     $com = auto_link($com);
     $com = eregi_replace("(^|>)(&gt;[^<]*)", "\\1<font color=".RE_COL.">\\2</font>", $com);
-    // ‰æ‘œƒtƒ@ƒCƒ‹–¼
+    // ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«å
     $img = $path.$tim.$ext;
     $src = IMG_DIR.$tim.$ext;
-    // <imgƒ^ƒOì¬
+    // <imgã‚¿ã‚°ä½œæˆ
     $imgsrc = "";
     if($ext){
-      $size = $fsize;//alt‚ÉƒTƒCƒY•\¦
-      if($w && $h){//ƒTƒCƒY‚ª‚ ‚é
+      $size = $fsize;//altã«ã‚µã‚¤ã‚ºè¡¨ç¤º
+      if($w && $h){//ã‚µã‚¤ã‚ºãŒã‚ã‚‹æ™‚
         if(@is_file(THUMB_DIR.$tim.'s.jpg')){
-          $imgsrc = "<small>ƒTƒ€ƒlƒCƒ‹‚ğ•\¦‚µ‚Ä‚¢‚Ü‚·.ƒNƒŠƒbƒN‚·‚é‚ÆŒ³‚ÌƒTƒCƒY‚ğ•\¦‚µ‚Ü‚·.</small><br><a href=\"".$src."\" target=_blank><img src=".THUMB_DIR.$tim.'s.jpg'.
+          $imgsrc = "<small>ã‚µãƒ ãƒã‚¤ãƒ«ã‚’è¡¨ç¤ºã—ã¦ã„ã¾ã™.ã‚¯ãƒªãƒƒã‚¯ã™ã‚‹ã¨å…ƒã®ã‚µã‚¤ã‚ºã‚’è¡¨ç¤ºã—ã¾ã™.</small><br><a href=\"".$src."\" target=_blank><img src=".THUMB_DIR.$tim.'s.jpg'.
       " border=0 align=left width=$w height=$h hspace=20 alt=\"".$size." B\"></a>";
         }else{
           $imgsrc = "<a href=\"".$src."\" target=_blank><img src=".$src.
       " border=0 align=left width=$w height=$h hspace=20 alt=\"".$size." B\"></a>";
         }
-      }else{//‚»‚êˆÈŠO
+      }else{//ãã‚Œä»¥å¤–
         $imgsrc = "<a href=\"".$src."\" target=_blank><img src=".$src.
       " border=0 align=left hspace=20 alt=\"".$size." B\"></a>";
       }
-      $dat.="‰æ‘œƒ^ƒCƒgƒ‹F<a href=\"$src\" target=_blank>$tim$ext</a>-($size B)<br>$imgsrc";
+      $dat.="ç”»åƒã‚¿ã‚¤ãƒˆãƒ«ï¼š<a href=\"$src\" target=_blank>$tim$ext</a>-($size B)<br>$imgsrc";
     }
-    // ƒƒCƒ“ì¬
+    // ãƒ¡ã‚¤ãƒ³ä½œæˆ
     $dat.="<input type=checkbox name=\"$no\" value=delete><font color=#cc1105 size=+1><b>$sub</b></font> \n";
     $dat.="Name <font color=#117743><b>$name</b></font> $now No.$no &nbsp; \n";
-    if(!$resno) $dat.="[<a href=".PHP_SELF."?res=$no>•ÔM</a>]";
+    if(!$resno) $dat.="[<a href=".PHP_SELF."?res=$no>è¿”ä¿¡</a>]";
     $dat.="\n<blockquote>$com</blockquote>";
 
-     // ‚»‚ë‚»‚ëÁ‚¦‚éB
+     // ãã‚ãã‚æ¶ˆãˆã‚‹ã€‚
      if($lastno-LOG_MAX*0.95>$no){
-      $dat.="<font color=\"#f00000\"><b>‚±‚ÌƒXƒŒ‚ÍŒÃ‚¢‚Ì‚ÅA‚à‚¤‚·‚®Á‚¦‚Ü‚·B</b></font><br>\n";
+      $dat.="<font color=\"#f00000\"><b>ã“ã®ã‚¹ãƒ¬ã¯å¤ã„ã®ã§ã€ã‚‚ã†ã™ãæ¶ˆãˆã¾ã™ã€‚</b></font><br>\n";
      }
 
-    if(!$resline=mysql_call("select * from ".SQLLOG." where resto=".$no." order by no")){echo "sql¸”s5<br>";}
+    if(!$resline=mysql_call("select * from ".SQLLOG." where resto=".$no." order by no")){echo "sqlå¤±æ•—5<br>";}
     $countres=mysql_num_rows($resline);
-#      $dat.=$no.' ';//res•\¦
+#      $dat.=$no.' ';//resè¡¨ç¤º
 
     if(!$resno){
      $s=$countres - 10;
      if($s<0){$s=0;}
      elseif($s>0){
-      $dat.="<font color=\"#707070\">ƒŒƒX".
-             $s."ŒÈ—ªB‘S‚Ä“Ç‚Ş‚É‚Í•ÔMƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚Ä‚­‚¾‚³‚¢B</font><br>\n";
+      $dat.="<font color=\"#707070\">ãƒ¬ã‚¹".
+             $s."ä»¶çœç•¥ã€‚å…¨ã¦èª­ã‚€ã«ã¯è¿”ä¿¡ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ã¦ãã ã•ã„ã€‚</font><br>\n";
      }
     }else{$s=0;}
 
-    while($resrow=mysql_fetch_row($resline)){ //res‚Ìƒ‹[ƒv
+    while($resrow=mysql_fetch_row($resline)){ //resã®ãƒ«ãƒ¼ãƒ—
       if($s>0){$s--;continue;}
       list($no,$now,$name,$email,$sub,$com,$host,$pwd,$ext,$w,$h,$tim,$time,$md5,$fsize,)=$resrow;
       if(!$no){break;}
 
-      // URL‚Æƒ[ƒ‹‚ÉƒŠƒ“ƒN
+      // URLã¨ãƒ¡ãƒ¼ãƒ«ã«ãƒªãƒ³ã‚¯
       if($email) $name = "<a href=\"mailto:$email\">$name</a>";
       $com = auto_link($com);
       $com = eregi_replace("(^|>)(&gt;[^<]*)", "\\1<font color=".RE_COL.">\\2</font>", $com);
-      // ƒƒCƒ“ì¬
+      // ãƒ¡ã‚¤ãƒ³ä½œæˆ
       $dat.="<table border=0><tr><td nowrap align=right valign=top>&gt;&gt;</td><td bgcolor=#F0E0D6>\n";
       $dat.="<input type=checkbox name=\"$no\" value=delete><font color=#cc1105 size=+1><b>$sub</b></font> \n";
       $dat.="Name <font color=#117743><b>$name</b></font> $now No.$no &nbsp; \n";
@@ -191,23 +191,23 @@ function updatelog($resno=0){
       $dat.="</td></tr></table>\n";
     }
     $dat.="<br clear=left><hr>\n";
-    clearstatcache();//ƒtƒ@ƒCƒ‹‚Ìstat‚ğƒNƒŠƒA
+    clearstatcache();//ãƒ•ã‚¡ã‚¤ãƒ«ã®statã‚’ã‚¯ãƒªã‚¢
     mysql_free_result($resline);
     $p++;
-    if($resno){break;} //res‚Ítree1s‚¾‚¯
+    if($resno){break;} //resæ™‚ã¯tree1è¡Œã ã‘
   }
 $dat.='<table align=right><tr><td nowrap align=center>
-<input type=hidden name=mode value=usrdel>y‹L–íœz[<input type=checkbox name=onlyimgdel value=on>‰æ‘œ‚¾‚¯Á‚·]<br>
-íœƒL[<input type=password name=pwd size=8 maxlength=8 value="">
-<input type=submit value="íœ"></form></td></tr></table>
+<input type=hidden name=mode value=usrdel>ã€è¨˜äº‹å‰Šé™¤ã€‘[<input type=checkbox name=onlyimgdel value=on>ç”»åƒã ã‘æ¶ˆã™]<br>
+å‰Šé™¤ã‚­ãƒ¼<input type=password name=pwd size=8 maxlength=8 value="">
+<input type=submit value="å‰Šé™¤"></form></td></tr></table>
 <script language="JavaScript"><!--
 l();
 //--></script>';
 
-    if(!$resno){ //res‚Í•\¦‚µ‚È‚¢
+    if(!$resno){ //resæ™‚ã¯è¡¨ç¤ºã—ãªã„
       $prev = $st - PAGE_DEF;
       $next = $st + PAGE_DEF;
-    // ‰üƒy[ƒWˆ—
+    // æ”¹ãƒšãƒ¼ã‚¸å‡¦ç†
       $dat.="<table align=left border=1><tr>";
       if($prev >= 0){
         if($prev==0){
@@ -215,9 +215,9 @@ l();
         }else{
           $dat.="<form action=\"".$prev/PAGE_DEF.PHP_EXT."\" method=get><td>";
         }
-        $dat.="<input type=submit value=\"‘O‚Ìƒy[ƒW\">";
+        $dat.="<input type=submit value=\"å‰ã®ãƒšãƒ¼ã‚¸\">";
         $dat.="</td></form>";
-      }else{$dat.="<td>Å‰‚Ìƒy[ƒW</td>";}
+      }else{$dat.="<td>æœ€åˆã®ãƒšãƒ¼ã‚¸</td>";}
 
       $dat.="<td>";
       for($i = 0; $i < $counttree ; $i+=PAGE_DEF){
@@ -232,9 +232,9 @@ l();
 
       if($p >= PAGE_DEF && $counttree > $next){
         $dat.="<form action=\"".$next/PAGE_DEF.PHP_EXT."\" method=get><td>";
-        $dat.="<input type=submit value=\"Ÿ‚Ìƒy[ƒW\">";
+        $dat.="<input type=submit value=\"æ¬¡ã®ãƒšãƒ¼ã‚¸\">";
         $dat.="</td></form>";
-      }else{$dat.="<td>ÅŒã‚Ìƒy[ƒW</td>";}
+      }else{$dat.="<td>æœ€å¾Œã®ãƒšãƒ¼ã‚¸</td>";}
         $dat.="</tr></table><br clear=all>\n";
     }
     foot($dat);
@@ -261,7 +261,7 @@ function mysql_call($query){
   return $ret;
 }
 
-/* ƒwƒbƒ_ */
+/* ãƒ˜ãƒƒãƒ€ */
 function head(&$dat){
   $dat.='<html><head>
 <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=Shift_JIS">
@@ -281,28 +281,28 @@ function l(e){var P=getCookie("pwdc"),N=getCookie("namec"),i;with(document){for(
 </head>
 <body bgcolor="#FFFFEE" text="#800000" link="#0000EE" vlink="#0000EE">
 <p align=right>
-[<a href="'.HOME.'" target="_top">ƒz[ƒ€</a>]
-[<a href="'.PHP_SELF.'?mode=admin">ŠÇ——p</a>]
+[<a href="'.HOME.'" target="_top">ãƒ›ãƒ¼ãƒ </a>]
+[<a href="'.PHP_SELF.'?mode=admin">ç®¡ç†ç”¨</a>]
 <p align=center>
 <font color="#800000" size=5>
 <b><SPAN>'.TITLE.'</SPAN></b></font>
 <hr width="90%" size=1>
 ';
 }
-/* “ŠeƒtƒH[ƒ€ */
+/* æŠ•ç¨¿ãƒ•ã‚©ãƒ¼ãƒ  */
 function form(&$dat,$resno,$admin=""){
   global $addinfo;
   $maxbyte = MAX_KB * 1024;
   $no=$resno;
   if($resno){
-    $msg .= "[<a href=\"".PHP_SELF2."\">Œf¦”Â‚É–ß‚é</a>]\n";
+    $msg .= "[<a href=\"".PHP_SELF2."\">æ²ç¤ºæ¿ã«æˆ»ã‚‹</a>]\n";
     $msg .= "<table width='100%'><tr><th bgcolor=#e04000>\n";
-    $msg .= "<font color=#FFFFFF>ƒŒƒX‘—Mƒ‚[ƒh</font>\n";
+    $msg .= "<font color=#FFFFFF>ãƒ¬ã‚¹é€ä¿¡ãƒ¢ãƒ¼ãƒ‰</font>\n";
     $msg .= "</th></tr></table>\n";
   }
   if($admin){
     $hidden = "<input type=hidden name=admin value=\"".ADMIN_PASS."\">";
-    $msg = "<h4>ƒ^ƒO‚ª‚Â‚©‚¦‚Ü‚·</h4>";
+    $msg = "<h4>ã‚¿ã‚°ãŒã¤ã‹ãˆã¾ã™</h4>";
   }
   $dat.=$msg.'<center>
 <form action="'.PHP_SELF.'" method="POST" enctype="multipart/form-data">
@@ -313,34 +313,34 @@ function form(&$dat,$resno,$admin=""){
 if($no){$dat.='<input type=hidden name=resto value="'.$no.'">
 ';}
 $dat.='<table cellpadding=1 cellspacing=1>
-<tr><td bgcolor=#eeaa88><b>‚¨‚È‚Ü‚¦</b></td><td><input type=text name=name size="28"></td></tr>
+<tr><td bgcolor=#eeaa88><b>ãŠãªã¾ãˆ</b></td><td><input type=text name=name size="28"></td></tr>
 <tr><td bgcolor=#eeaa88><b>E-mail</b></td><td><input type=text name=email size="28"></td></tr>
-<tr><td bgcolor=#eeaa88><b>‘è@@–¼</b></td><td><input type=text name=sub size="35">
-<input type=submit value="‘—M‚·‚é"></td></tr>
-<tr><td bgcolor=#eeaa88><b>ƒRƒƒ“ƒg</b></td><td><textarea name=com cols="48" rows="4" wrap=soft></textarea></td></tr>
+<tr><td bgcolor=#eeaa88><b>é¡Œã€€ã€€å</b></td><td><input type=text name=sub size="35">
+<input type=submit value="é€ä¿¡ã™ã‚‹"></td></tr>
+<tr><td bgcolor=#eeaa88><b>ã‚³ãƒ¡ãƒ³ãƒˆ</b></td><td><textarea name=com cols="48" rows="4" wrap=soft></textarea></td></tr>
 ';
 if(!$resno){
-$dat.='<tr><td bgcolor=#eeaa88><b>“Y•tFile</b></td>
+$dat.='<tr><td bgcolor=#eeaa88><b>æ·»ä»˜File</b></td>
 <td><input type=file name=upfile size="35">
-[<label><input type=checkbox name=textonly value=on>‰æ‘œ‚È‚µ</label>]</td></tr>
+[<label><input type=checkbox name=textonly value=on>ç”»åƒãªã—</label>]</td></tr>
 ';}
-$dat.='<tr><td bgcolor=#eeaa88><b>íœƒL[</b></td><td><input type=password name=pwd size=8 maxlength=8 value=""><small>(‹L–‚Ìíœ—pB‰p”š‚Å8•¶šˆÈ“à)</small></td></tr>
+$dat.='<tr><td bgcolor=#eeaa88><b>å‰Šé™¤ã‚­ãƒ¼</b></td><td><input type=password name=pwd size=8 maxlength=8 value=""><small>(è¨˜äº‹ã®å‰Šé™¤ç”¨ã€‚è‹±æ•°å­—ã§8æ–‡å­—ä»¥å†…)</small></td></tr>
 <script language="JavaScript"><!--
 l();
 //--></script>
 <tr><td colspan=2>
 <small>
-<LI>“Y•t‰Â”\ƒtƒ@ƒCƒ‹FGIF, JPG, PNG ƒuƒ‰ƒEƒU‚É‚æ‚Á‚Ä‚Í³í‚É“Y•t‚Å‚«‚È‚¢‚±‚Æ‚ª‚ ‚è‚Ü‚·B
-<LI>Å‘å“Šeƒf[ƒ^—Ê‚Í '.MAX_KB.' KB ‚Ü‚Å‚Å‚·Bsage‹@”\•t‚«B
-<LI>‰æ‘œ‚Í‰¡ '.MAX_W.'ƒsƒNƒZƒ‹Ac '.MAX_H.'ƒsƒNƒZƒ‹‚ğ’´‚¦‚é‚Æk¬•\¦‚³‚ê‚Ü‚·B
+<LI>æ·»ä»˜å¯èƒ½ãƒ•ã‚¡ã‚¤ãƒ«ï¼šGIF, JPG, PNG ãƒ–ãƒ©ã‚¦ã‚¶ã«ã‚ˆã£ã¦ã¯æ­£å¸¸ã«æ·»ä»˜ã§ããªã„ã“ã¨ãŒã‚ã‚Šã¾ã™ã€‚
+<LI>æœ€å¤§æŠ•ç¨¿ãƒ‡ãƒ¼ã‚¿é‡ã¯ '.MAX_KB.' KB ã¾ã§ã§ã™ã€‚sageæ©Ÿèƒ½ä»˜ãã€‚
+<LI>ç”»åƒã¯æ¨ª '.MAX_W.'ãƒ”ã‚¯ã‚»ãƒ«ã€ç¸¦ '.MAX_H.'ãƒ”ã‚¯ã‚»ãƒ«ã‚’è¶…ãˆã‚‹ã¨ç¸®å°è¡¨ç¤ºã•ã‚Œã¾ã™ã€‚
 '.$addinfo.'</small></td></tr></table></form></center><hr>';
 }
 
-/* ƒtƒbƒ^ */
+/* ãƒ•ãƒƒã‚¿ */
 function foot(&$dat){
   $dat.='
 <center>
-<small><!-- GazouBBS v3.0 --><!-- ‚Ó‚½‚Î‰ü0.8 -->
+<small><!-- GazouBBS v3.0 --><!-- ãµãŸã°æ”¹0.8 -->
 - <a href="http://php.s3.to" target=_top>GazouBBS</a> + <a href="http://www.2chan.net/" target=_top>futaba</a>-
 </small>
 </center>
@@ -353,11 +353,11 @@ function error($mes,$dest=''){
   head($dat);
   echo $dat;
   echo "<br><br><hr size=1><br><br>
-        <center><font color=red size=5><b>$mes<br><br><a href=".PHP_SELF2.">ƒŠƒ[ƒh</a></b></font></center>
+        <center><font color=red size=5><b>$mes<br><br><a href=".PHP_SELF2.">ãƒªãƒ­ãƒ¼ãƒ‰</a></b></font></center>
         <br><br><hr size=1>";
   die("</body></html>");
 }
-/* ƒI[ƒgƒŠƒ“ƒN */
+/* ã‚ªãƒ¼ãƒˆãƒªãƒ³ã‚¯ */
 function auto_link($proto){
   $proto = ereg_replace("(https?|ftp|news)(://[[:alnum:]\+\$\;\?\.%,!#~*/:@&=_-]+)","<a href=\"\\1\\2\" target=\"_blank\">\\1\\2</a>",$proto);
   return $proto;
@@ -367,33 +367,33 @@ function  proxy_connect($port) {
   $fp = @fsockopen ($_SERVER["REMOTE_ADDR"], $port,$a,$b,2);
   if(!$fp){return 0;}else{return 1;}
 }
-/* ‹L–‘‚«‚İ */
+/* è¨˜äº‹æ›¸ãè¾¼ã¿ */
 function regist($name,$email,$sub,$com,$url,$pwd,$upfile,$upfile_name,$resto){
   global $path,$badstring,$badfile,$badip,$pwdc,$textonly;
 
-  // ŠÔ
+  // æ™‚é–“
   $time = time();
   $tim = $time.substr(microtime(),2,3);
 
-  // ƒAƒbƒvƒ[ƒhˆ—
+  // ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰å‡¦ç†
   if($upfile&&file_exists($upfile)){
     $dest = $path.$tim.'.tmp';
     move_uploaded_file($upfile, $dest);
-    //ª‚ÅƒGƒ‰[‚È‚ç«‚É•ÏX
+    //â†‘ã§ã‚¨ãƒ©ãƒ¼ãªã‚‰â†“ã«å¤‰æ›´
     //copy($upfile, $dest);
     $upfile_name = CleanStr($upfile_name);
-    if(!is_file($dest)) error("ƒAƒbƒvƒ[ƒh‚É¸”s‚µ‚Ü‚µ‚½<br>ƒT[ƒo‚ªƒTƒ|[ƒg‚µ‚Ä‚¢‚È‚¢‰Â”\«‚ª‚ ‚è‚Ü‚·",$dest);
+    if(!is_file($dest)) error("ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã«å¤±æ•—ã—ã¾ã—ãŸ<br>ã‚µãƒ¼ãƒãŒã‚µãƒãƒ¼ãƒˆã—ã¦ã„ãªã„å¯èƒ½æ€§ãŒã‚ã‚Šã¾ã™",$dest);
     $size = getimagesize($dest);
-    if(!is_array($size)) error("ƒAƒbƒvƒ[ƒh‚É¸”s‚µ‚Ü‚µ‚½<br>‰æ‘œƒtƒ@ƒCƒ‹ˆÈŠO‚Íó‚¯•t‚¯‚Ü‚¹‚ñ",$dest);
+    if(!is_array($size)) error("ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã«å¤±æ•—ã—ã¾ã—ãŸ<br>ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«ä»¥å¤–ã¯å—ã‘ä»˜ã‘ã¾ã›ã‚“",$dest);
     $md5 = md5_of_file($dest);
     foreach($badfile as $value){if(ereg("^$value",$md5)){
-      error("ƒAƒbƒvƒ[ƒh‚É¸”s‚µ‚Ü‚µ‚½<br>“¯‚¶‰æ‘œ‚ª‚ ‚è‚Ü‚µ‚½",$dest); //‹‘â‰æ‘œ
+      error("ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã«å¤±æ•—ã—ã¾ã—ãŸ<br>åŒã˜ç”»åƒãŒã‚ã‚Šã¾ã—ãŸ",$dest); //æ‹’çµ¶ç”»åƒ
     }}
     chmod($dest,0666);
     $W = $size[0];
     $H = $size[1];
     $fsize = filesize($dest);
-    if($fsize>MAX_KB * 1024) error("ƒAƒbƒvƒ[ƒh‚É¸”s‚µ‚Ü‚µ‚½<br>ƒTƒCƒY‚ª‘å‚«‚·‚¬‚Ü‚·<br>".MAX_KB."KƒoƒCƒg‚Ü‚Å",$dest);
+    if($fsize>MAX_KB * 1024) error("ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã«å¤±æ•—ã—ã¾ã—ãŸ<br>ã‚µã‚¤ã‚ºãŒå¤§ãã™ãã¾ã™<br>".MAX_KB."Kãƒã‚¤ãƒˆã¾ã§",$dest);
     switch ($size[2]) {
       case 1 : $ext=".gif";break;
       case 2 : $ext=".jpg";break;
@@ -405,7 +405,7 @@ function regist($name,$email,$sub,$com,$url,$pwd,$upfile,$upfile_name,$resto){
       default : $ext=".xxx";break;
     }
 
-    // ‰æ‘œ•\¦k¬
+    // ç”»åƒè¡¨ç¤ºç¸®å°
     if($W > MAX_W || $H > MAX_H){
       $W2 = MAX_W / $W;
       $H2 = MAX_H / $H;
@@ -413,28 +413,28 @@ function regist($name,$email,$sub,$com,$url,$pwd,$upfile,$upfile_name,$resto){
       $W = ceil($W * $key);
       $H = ceil($H * $key);
     }
-    $mes = "‰æ‘œ $upfile_name ‚ÌƒAƒbƒvƒ[ƒh‚ª¬Œ÷‚µ‚Ü‚µ‚½<br><br>";
+    $mes = "ç”»åƒ $upfile_name ã®ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ãŒæˆåŠŸã—ã¾ã—ãŸ<br><br>";
   }
 
   if($_FILES["upfile"]["error"]==2){
-    error("ƒAƒbƒvƒ[ƒh‚É¸”s‚µ‚Ü‚µ‚½<br>‰æ‘œƒTƒCƒY‚ª‘å‚«‚·‚¬‚Ü‚·<br>".MAX_KB."KƒoƒCƒg‚Ü‚Å",$dest);
+    error("ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã«å¤±æ•—ã—ã¾ã—ãŸ<br>ç”»åƒã‚µã‚¤ã‚ºãŒå¤§ãã™ãã¾ã™<br>".MAX_KB."Kãƒã‚¤ãƒˆã¾ã§",$dest);
   }
   if($upfile_name&&$_FILES["upfile"]["size"]==0){
-    error("ƒAƒbƒvƒ[ƒh‚É¸”s‚µ‚Ü‚µ‚½<br>‰æ‘œƒTƒCƒY‚ª‘å‚«‚·‚¬‚é‚©A<br>‚Ü‚½‚Í‰æ‘œ‚ª‚ ‚è‚Ü‚¹‚ñB",$dest);
+    error("ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã«å¤±æ•—ã—ã¾ã—ãŸ<br>ç”»åƒã‚µã‚¤ã‚ºãŒå¤§ãã™ãã‚‹ã‹ã€<br>ã¾ãŸã¯ç”»åƒãŒã‚ã‚Šã¾ã›ã‚“ã€‚",$dest);
   }
 
-  //ÅŒã‚Ì‘‚«‚İ”Ô†
-  if(!$result=mysql_call("select max(no) from ".SQLLOG)){echo "sql¸”s387<br>";}
+  //æœ€å¾Œã®æ›¸ãè¾¼ã¿ç•ªå·
+  if(!$result=mysql_call("select max(no) from ".SQLLOG)){echo "sqlå¤±æ•—387<br>";}
   $row=mysql_fetch_array($result);
   $lastno=(int)$row[0];
   mysql_free_result($result);
 
-  // ƒƒOs”ƒI[ƒo[
-  if(!$result=mysql_call("select no,ext,tim from ".SQLLOG." where no<=".($lastno-LOG_MAX))){echo "sql¸”s393<br>";}
+  // ãƒ­ã‚°è¡Œæ•°ã‚ªãƒ¼ãƒãƒ¼
+  if(!$result=mysql_call("select no,ext,tim from ".SQLLOG." where no<=".($lastno-LOG_MAX))){echo "sqlå¤±æ•—393<br>";}
   else{
     while($resrow=mysql_fetch_row($result)){
       list($dno,$dext,$dtim)=$resrow;
-      if(!mysql_call("delete from ".SQLLOG." where no=".$dno)){echo "sql¸”s396<br>";}
+      if(!mysql_call("delete from ".SQLLOG." where no=".$dno)){echo "sqlå¤±æ•—396<br>";}
       if($dext){
         if(is_file($path.$dtim.$dext)) unlink($path.$dtim.$dext);
         if(is_file(THUMB_DIR.$dtim.'s.jpg')) unlink(THUMB_DIR.$dtim.'s.jpg');
@@ -446,41 +446,41 @@ function regist($name,$email,$sub,$com,$url,$pwd,$upfile,$upfile_name,$resto){
   $find = false;
   $resto=(int)$resto;
   if($resto){
-    if(!$result = mysql_call("select * from ".SQLLOG." where root>0 and no=$resto")){echo "sql¸”s403<br>";}
+    if(!$result = mysql_call("select * from ".SQLLOG." where root>0 and no=$resto")){echo "sqlå¤±æ•—403<br>";}
     else{
       $find = mysql_fetch_row($result);
       mysql_free_result($result);
     }
-    if(!$find) error("ƒXƒŒƒbƒh‚ª‚ ‚è‚Ü‚¹‚ñ",$dest);
+    if(!$find) error("ã‚¹ãƒ¬ãƒƒãƒ‰ãŒã‚ã‚Šã¾ã›ã‚“",$dest);
   }
 
   foreach($badstring as $value){if(ereg($value,$com)||ereg($value,$sub)||ereg($value,$name)||ereg($value,$email)){
-  error("‹‘â‚³‚ê‚Ü‚µ‚½(str)",$dest);};}
-  if($_SERVER["REQUEST_METHOD"] != "POST") error("•s³‚È“Še‚ğ‚µ‚È‚¢‚Å‰º‚³‚¢(post)",$dest);
-  // ƒtƒH[ƒ€“à—e‚ğƒ`ƒFƒbƒN
-  if(!$name||ereg("^[ |@|]*$",$name)) $name="";
-  if(!$com||ereg("^[ |@|\t]*$",$com)) $com="";
-  if(!$sub||ereg("^[ |@|]*$",$sub))   $sub=""; 
+  error("æ‹’çµ¶ã•ã‚Œã¾ã—ãŸ(str)",$dest);};}
+  if($_SERVER["REQUEST_METHOD"] != "POST") error("ä¸æ­£ãªæŠ•ç¨¿ã‚’ã—ãªã„ã§ä¸‹ã•ã„(post)",$dest);
+  // ãƒ•ã‚©ãƒ¼ãƒ å†…å®¹ã‚’ãƒã‚§ãƒƒã‚¯
+  if(!$name||ereg("^[ |ã€€|]*$",$name)) $name="";
+  if(!$com||ereg("^[ |ã€€|\t]*$",$com)) $com="";
+  if(!$sub||ereg("^[ |ã€€|]*$",$sub))   $sub=""; 
 
-  if(!$resto&&!$textonly&&!is_file($dest)) error("‰æ‘œ‚ª‚ ‚è‚Ü‚¹‚ñ",$dest);
-  if(!$com&&!is_file($dest)) error("‰½‚©‘‚¢‚Ä‰º‚³‚¢",$dest);
+  if(!$resto&&!$textonly&&!is_file($dest)) error("ç”»åƒãŒã‚ã‚Šã¾ã›ã‚“",$dest);
+  if(!$com&&!is_file($dest)) error("ä½•ã‹æ›¸ã„ã¦ä¸‹ã•ã„",$dest);
 
-  $name=ereg_replace("ŠÇ—","\"ŠÇ—\"",$name);
-  $name=ereg_replace("íœ","\"íœ\"",$name);
+  $name=ereg_replace("ç®¡ç†","\"ç®¡ç†\"",$name);
+  $name=ereg_replace("å‰Šé™¤","\"å‰Šé™¤\"",$name);
 
-  if(strlen($com) > 1000) error("–{•¶‚ª’·‚·‚¬‚Ü‚·‚ÁI",$dest);
-  if(strlen($name) > 100) error("–{•¶‚ª’·‚·‚¬‚Ü‚·‚ÁI",$dest);
-  if(strlen($email) > 100) error("–{•¶‚ª’·‚·‚¬‚Ü‚·‚ÁI",$dest);
-  if(strlen($sub) > 100) error("–{•¶‚ª’·‚·‚¬‚Ü‚·‚ÁI",$dest);
-  if(strlen($resto) > 10) error("ˆÙí‚Å‚·",$dest);
-  if(strlen($url) > 10) error("ˆÙí‚Å‚·",$dest);
+  if(strlen($com) > 1000) error("æœ¬æ–‡ãŒé•·ã™ãã¾ã™ã£ï¼",$dest);
+  if(strlen($name) > 100) error("æœ¬æ–‡ãŒé•·ã™ãã¾ã™ã£ï¼",$dest);
+  if(strlen($email) > 100) error("æœ¬æ–‡ãŒé•·ã™ãã¾ã™ã£ï¼",$dest);
+  if(strlen($sub) > 100) error("æœ¬æ–‡ãŒé•·ã™ãã¾ã™ã£ï¼",$dest);
+  if(strlen($resto) > 10) error("ç•°å¸¸ã§ã™",$dest);
+  if(strlen($url) > 10) error("ç•°å¸¸ã§ã™",$dest);
 
-  //ƒzƒXƒgæ“¾
+  //ãƒ›ã‚¹ãƒˆå–å¾—
   $host = gethostbyaddr($_SERVER["REMOTE_ADDR"]);
 
-  foreach($badip as $value){ //‹‘âhost
+  foreach($badip as $value){ //æ‹’çµ¶host
    if(eregi("$value$",$host)){
-    error("‹‘â‚³‚ê‚Ü‚µ‚½(host)",$dest);
+    error("æ‹’çµ¶ã•ã‚Œã¾ã—ãŸ(host)",$dest);
   }}
   if(eregi("^mail",$host)
     || eregi("^ns",$host)
@@ -503,13 +503,13 @@ function regist($name,$email,$sub,$com,$url,$pwd,$upfile,$upfile_name,$resto){
 
   if($pxck=="on" && PROXY_CHECK){
     if(proxy_connect('80') == 1){
-      error("‚d‚q‚q‚n‚qI@ŒöŠJ‚o‚q‚n‚w‚x‹K§’†II(80)",$dest);
+      error("ï¼¥ï¼²ï¼²ï¼¯ï¼²ï¼ã€€å…¬é–‹ï¼°ï¼²ï¼¯ï¼¸ï¼¹è¦åˆ¶ä¸­ï¼ï¼(80)",$dest);
     } elseif(proxy_connect('8080') == 1){
-      error("‚d‚q‚q‚n‚qI@ŒöŠJ‚o‚q‚n‚w‚x‹K§’†II(8080)",$dest);
+      error("ï¼¥ï¼²ï¼²ï¼¯ï¼²ï¼ã€€å…¬é–‹ï¼°ï¼²ï¼¯ï¼¸ï¼¹è¦åˆ¶ä¸­ï¼ï¼(8080)",$dest);
     }
   }
 
-  // No.‚ÆƒpƒX‚ÆŠÔ‚ÆURLƒtƒH[ƒ}ƒbƒg
+  // No.ã¨ãƒ‘ã‚¹ã¨æ™‚é–“ã¨URLãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
   srand((double)microtime()*1000000);
   if($pwd==""){
     if($pwdc==""){
@@ -521,100 +521,100 @@ function regist($name,$email,$sub,$com,$url,$pwd,$upfile,$upfile_name,$resto){
 
   $c_pass = $pwd;
   $pass = ($pwd) ? substr(md5($pwd),2,8) : "*";
-  $youbi = array('“ú','Œ','‰Î','…','–Ø','‹à','“y');
+  $youbi = array('æ—¥','æœˆ','ç«','æ°´','æœ¨','é‡‘','åœŸ');
   $yd = $youbi[gmdate("w", $time+9*60*60)] ;
   $now = gmdate("y/m/d",$time+9*60*60)."(".(string)$yd.")".gmdate("H:i",$time+9*60*60);
   if(DISP_ID){
     if($email&&DISP_ID==1){
       $now .= " ID:???";
     }else{
-      $now.=" ID:".substr(crypt(md5($_SERVER["REMOTE_ADDR"].'id‚Ìí'.gmdate("Ymd", $time+9*60*60)),'id'),-8);
+      $now.=" ID:".substr(crypt(md5($_SERVER["REMOTE_ADDR"].'idã®ç¨®'.gmdate("Ymd", $time+9*60*60)),'id'),-8);
     }
   }
-  //ƒeƒLƒXƒg®Œ`
+  //ãƒ†ã‚­ã‚¹ãƒˆæ•´å½¢
   $email= CleanStr($email);  $email=ereg_replace("[\r\n]","",$email);
   $sub  = CleanStr($sub);    $sub  =ereg_replace("[\r\n]","",$sub);
   $url  = CleanStr($url);    $url  =ereg_replace("[\r\n]","",$url);
   $resto= CleanStr($resto);  $resto=ereg_replace("[\r\n]","",$resto);
   $com  = CleanStr($com);
-  // ‰üs•¶š‚Ì“ˆêB 
+  // æ”¹è¡Œæ–‡å­—ã®çµ±ä¸€ã€‚ 
   $com = str_replace( "\r\n",  "\n", $com); 
   $com = str_replace( "\r",  "\n", $com);
-  // ˜A‘±‚·‚é‹ós‚ğˆês
-  $com = ereg_replace("\n((@| )*\n){3,}","\n",$com);
+  // é€£ç¶šã™ã‚‹ç©ºè¡Œã‚’ä¸€è¡Œ
+  $com = ereg_replace("\n((ã€€| )*\n){3,}","\n",$com);
   if(!BR_CHECK || substr_count($com,"\n")<BR_CHECK){
-    $com = nl2br($com);		//‰üs•¶š‚Ì‘O‚É<br>‚ğ‘ã“ü‚·‚é
+    $com = nl2br($com);		//æ”¹è¡Œæ–‡å­—ã®å‰ã«<br>ã‚’ä»£å…¥ã™ã‚‹
   }
-  $com = str_replace("\n",  "", $com);	//\n‚ğ•¶š—ñ‚©‚çÁ‚·B
+  $com = str_replace("\n",  "", $com);	//\nã‚’æ–‡å­—åˆ—ã‹ã‚‰æ¶ˆã™ã€‚
 
-  $name=ereg_replace("Ÿ","",$name);
+  $name=ereg_replace("â—†","â—‡",$name);
   $name=ereg_replace("[\r\n]","",$name);
   $names=$name;
   $name = CleanStr($name);
-  if(ereg("(#|”)(.*)",$names,$regs)){
+  if(ereg("(#|ï¼ƒ)(.*)",$names,$regs)){
     $cap = $regs[2];
     $cap=strtr($cap,"&amp;", "&");
     $cap=strtr($cap,"&#44;", ",");
-    $name=ereg_replace("(#|”)(.*)","",$name);
+    $name=ereg_replace("(#|ï¼ƒ)(.*)","",$name);
     $salt=substr($cap."H.",1,2);
     $salt=ereg_replace("[^\.-z]",".",$salt);
     $salt=strtr($salt,":;<=>?@[\\]^_`","ABCDEFGabcdef"); 
-    $name.=" </b>Ÿ".substr(crypt($cap,$salt),-10)."<b>";
+    $name.=" </b>â—†".substr(crypt($cap,$salt),-10)."<b>";
   }
 
-  if(!$name) $name="–¼–³‚µ";
-  if(!$com) $com="–{•¶‚È‚µ";
-  if(!$sub) $sub="–³‘è"; 
+  if(!$name) $name="åç„¡ã—";
+  if(!$com) $com="æœ¬æ–‡ãªã—";
+  if(!$sub) $sub="ç„¡é¡Œ"; 
 
-  // “ñd“Šeƒ`ƒFƒbƒN
+  // äºŒé‡æŠ•ç¨¿ãƒã‚§ãƒƒã‚¯
   $query="select time from ".SQLLOG." where com='".mysql_escape_string($com)."' ".
          "and host='".mysql_escape_string($host)."' ".
-         "and no>".($lastno-20);  //ƒRƒƒ“ƒg‚ª“¯‚¶
-  if(!$result=mysql_call($query)){echo "sql¸”s510<br>";}
+         "and no>".($lastno-20);  //ã‚³ãƒ¡ãƒ³ãƒˆãŒåŒã˜
+  if(!$result=mysql_call($query)){echo "sqlå¤±æ•—510<br>";}
   $row=mysql_fetch_array($result);
   mysql_free_result($result);
-  if($row&&!$upfile_name)error("˜A‘±“Še‚Í‚à‚¤‚µ‚Î‚ç‚­ŠÔ‚ğ’u‚¢‚Ä‚©‚ç‚¨Šè‚¢’v‚µ‚Ü‚·",$dest);
+  if($row&&!$upfile_name)error("é€£ç¶šæŠ•ç¨¿ã¯ã‚‚ã†ã—ã°ã‚‰ãæ™‚é–“ã‚’ç½®ã„ã¦ã‹ã‚‰ãŠé¡˜ã„è‡´ã—ã¾ã™",$dest);
 
   $query="select time from ".SQLLOG." where time>".($time - RENZOKU)." ".
-         "and host='".mysql_escape_string($host)."' ";  //‘O‚Ì“Še‚©‚ç’ZŠÔ
-  if(!$result=mysql_call($query)){echo "sql¸”s577<br>";}
+         "and host='".mysql_escape_string($host)."' ";  //å‰ã®æŠ•ç¨¿ã‹ã‚‰çŸ­æ™‚é–“
+  if(!$result=mysql_call($query)){echo "sqlå¤±æ•—577<br>";}
   $row=mysql_fetch_array($result);
   mysql_free_result($result);
-  if($row&&!$upfile_name)error("˜A‘±“Še‚Í‚à‚¤‚µ‚Î‚ç‚­ŠÔ‚ğ’u‚¢‚Ä‚©‚ç‚¨Šè‚¢’v‚µ‚Ü‚·",$dest);
+  if($row&&!$upfile_name)error("é€£ç¶šæŠ•ç¨¿ã¯ã‚‚ã†ã—ã°ã‚‰ãæ™‚é–“ã‚’ç½®ã„ã¦ã‹ã‚‰ãŠé¡˜ã„è‡´ã—ã¾ã™",$dest);
 
-  // ƒAƒbƒvƒ[ƒhˆ—
+  // ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰å‡¦ç†
   if($dest&&file_exists($dest)){
 
   $query="select time from ".SQLLOG." where time>".($time - RENZOKU2)." ".
-         "and host='".mysql_escape_string($host)."' ";  //‘O‚Ì“Še‚©‚ç’ZŠÔ
-  if(!$result=mysql_call($query)){echo "sql¸”s586<br>";}
+         "and host='".mysql_escape_string($host)."' ";  //å‰ã®æŠ•ç¨¿ã‹ã‚‰çŸ­æ™‚é–“
+  if(!$result=mysql_call($query)){echo "sqlå¤±æ•—586<br>";}
   $row=mysql_fetch_array($result);
   mysql_free_result($result);
-  if($row&&$upfile_name)error("‰æ‘œ˜A‘±“Še‚Í‚à‚¤‚µ‚Î‚ç‚­ŠÔ‚ğ’u‚¢‚Ä‚©‚ç‚¨Šè‚¢’v‚µ‚Ü‚·",$dest);
+  if($row&&$upfile_name)error("ç”»åƒé€£ç¶šæŠ•ç¨¿ã¯ã‚‚ã†ã—ã°ã‚‰ãæ™‚é–“ã‚’ç½®ã„ã¦ã‹ã‚‰ãŠé¡˜ã„è‡´ã—ã¾ã™",$dest);
 
-  //‰æ‘œd•¡ƒ`ƒFƒbƒN
+  //ç”»åƒé‡è¤‡ãƒã‚§ãƒƒã‚¯
     $result = mysql_call("select tim,ext,md5 from ".SQLLOG." where md5='".$md5."'");
     if($result){
       list($timp,$extp,$md5p) = mysql_fetch_row($result);
       mysql_free_result($result);
 #      if($timp&&file_exists($path.$timp.$extp)){ #}
       if($timp){
-        error("ƒAƒbƒvƒ[ƒh‚É¸”s‚µ‚Ü‚µ‚½<br>“¯‚¶‰æ‘œ‚ª‚ ‚è‚Ü‚·",$dest);
+        error("ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã«å¤±æ•—ã—ã¾ã—ãŸ<br>åŒã˜ç”»åƒãŒã‚ã‚Šã¾ã™",$dest);
       }
     }
   }
 
   $restoqu=(int)$resto;
-  if($resto){ //res,rootˆ—‚Ì‹æ•Ê
+  if($resto){ //res,rootå‡¦ç†ã®åŒºåˆ¥
     $rootqu="0";
-    if(!$resline=mysql_call("select * from ".SQLLOG." where resto=".$resto)){echo "sql¸”s581<br>";}
+    if(!$resline=mysql_call("select * from ".SQLLOG." where resto=".$resto)){echo "sqlå¤±æ•—581<br>";}
     $countres=mysql_num_rows($resline);
     mysql_free_result($resline);
     if(!stristr($email,'sage') && $countres < MAX_RES){
-      $query="update ".SQLLOG." set root=now() where no=$resto"; //res‚È‚çageˆ—
-      if(!$result=mysql_call($query)){echo "sql¸”s527<br>";}
+      $query="update ".SQLLOG." set root=now() where no=$resto"; //resãªã‚‰ageå‡¦ç†
+      if(!$result=mysql_call($query)){echo "sqlå¤±æ•—527<br>";}
     }
-  }else{$rootqu="now()";} //root‚È‚çŒ»‚ğ‘‚­
+  }else{$rootqu="now()";} //rootãªã‚‰ç¾æ™‚åˆ»ã‚’æ›¸ã
   
   $query="insert into ".SQLLOG." (now,name,email,sub,com,host,pwd,ext,w,h,tim,time,md5,fsize,root,resto) values (".
 "'".$now."',".
@@ -633,10 +633,10 @@ function regist($name,$email,$sub,$com,$url,$pwd,$upfile,$upfile_name,$resto){
 (int)$fsize.",".
 $rootqu.",".
 (int)$resto.")";
-  if(!$result=mysql_call($query)){echo "sql¸”s2“o˜^<br>";}  //post‹L–‚Ì“o˜^
+  if(!$result=mysql_call($query)){echo "sqlå¤±æ•—2ç™»éŒ²<br>";}  //postè¨˜äº‹ã®ç™»éŒ²
 
-    //ƒNƒbƒL[•Û‘¶
-  setcookie ("pwdc", $c_pass,time()+7*24*3600);  /* 1TŠÔ‚ÅŠúŒÀØ‚ê */
+    //ã‚¯ãƒƒã‚­ãƒ¼ä¿å­˜
+  setcookie ("pwdc", $c_pass,time()+7*24*3600);  /* 1é€±é–“ã§æœŸé™åˆ‡ã‚Œ */
   if(function_exists("mb_internal_encoding")&&function_exists("mb_convert_encoding")
       &&function_exists("mb_substr")){
     if(ereg("MSIE|Opera",$_SERVER["HTTP_USER_AGENT"])){
@@ -650,7 +650,7 @@ $rootqu.",".
       header("Set-Cookie: namec=$c_name; expires=".gmdate("D, d-M-Y H:i:s",time()+7*24*3600)." GMT",false);
     }else{
       $c_name=$names;
-      setcookie ("namec", $c_name,time()+7*24*3600);  /* 1TŠÔ‚ÅŠúŒÀØ‚ê */
+      setcookie ("namec", $c_name,time()+7*24*3600);  /* 1é€±é–“ã§æœŸé™åˆ‡ã‚Œ */
     }
   }
 
@@ -661,17 +661,17 @@ $rootqu.",".
   updatelog();
 
   echo "<html><head><META HTTP-EQUIV=\"refresh\" content=\"1;URL=".PHP_SELF2."\"></head>";
-  echo "<body>$mes ‰æ–Ê‚ğØ‚è‘Ö‚¦‚Ü‚·</body></html>";
+  echo "<body>$mes ç”»é¢ã‚’åˆ‡ã‚Šæ›¿ãˆã¾ã™</body></html>";
 }
 
-//ƒTƒ€ƒlƒCƒ‹ì¬
+//ã‚µãƒ ãƒã‚¤ãƒ«ä½œæˆ
 function thumb($path,$tim,$ext){
   if(!function_exists("ImageCreate")||!function_exists("ImageCreateFromJPEG"))return;
   $fname=$path.$tim.$ext;
-  $thumb_dir = THUMB_DIR;     //ƒTƒ€ƒlƒCƒ‹•Û‘¶ƒfƒBƒŒƒNƒgƒŠ
-  $width     = MAX_W;            //o—Í‰æ‘œ•
-  $height    = MAX_H;            //o—Í‰æ‘œ‚‚³
-  // ‰æ‘œ‚Ì•‚Æ‚‚³‚Æƒ^ƒCƒv‚ğæ“¾
+  $thumb_dir = THUMB_DIR;     //ã‚µãƒ ãƒã‚¤ãƒ«ä¿å­˜ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
+  $width     = MAX_W;            //å‡ºåŠ›ç”»åƒå¹…
+  $height    = MAX_H;            //å‡ºåŠ›ç”»åƒé«˜ã•
+  // ç”»åƒã®å¹…ã¨é«˜ã•ã¨ã‚¿ã‚¤ãƒ—ã‚’å–å¾—
   $size = GetImageSize($fname);
   switch ($size[2]) {
     case 1 :
@@ -696,7 +696,7 @@ function thumb($path,$tim,$ext){
       break;
     default : return;
   }
-  // ƒŠƒTƒCƒY
+  // ãƒªã‚µã‚¤ã‚º
   if ($size[0] > $width || $size[1] >$height) {
     $key_w = $width / $size[0];
     $key_h = $height / $size[1];
@@ -707,25 +707,25 @@ function thumb($path,$tim,$ext){
     $out_w = $size[0];
     $out_h = $size[1];
   }
-  // o—Í‰æ‘œiƒTƒ€ƒlƒCƒ‹j‚ÌƒCƒ[ƒW‚ğì¬
+  // å‡ºåŠ›ç”»åƒï¼ˆã‚µãƒ ãƒã‚¤ãƒ«ï¼‰ã®ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚’ä½œæˆ
   if(function_exists("ImageCreateTrueColor")&&get_gd_ver()=="2"){
     $im_out = ImageCreateTrueColor($out_w, $out_h);
   }else{$im_out = ImageCreate($out_w, $out_h);}
-  // Œ³‰æ‘œ‚ğc‰¡‚Æ‚à ƒRƒs[‚µ‚Ü‚·B
+  // å…ƒç”»åƒã‚’ç¸¦æ¨ªã¨ã‚‚ ã‚³ãƒ”ãƒ¼ã—ã¾ã™ã€‚
   ImageCopyResized($im_out, $im_in, 0, 0, 0, 0, $out_w, $out_h, $size[0], $size[1]);
-  // ƒTƒ€ƒlƒCƒ‹‰æ‘œ‚ğ•Û‘¶
+  // ã‚µãƒ ãƒã‚¤ãƒ«ç”»åƒã‚’ä¿å­˜
   ImageJPEG($im_out, $thumb_dir.$tim.'s.jpg',60);
   chmod($thumb_dir.$tim.'s.jpg',0666);
-  // ì¬‚µ‚½ƒCƒ[ƒW‚ğ”jŠü
+  // ä½œæˆã—ãŸã‚¤ãƒ¡ãƒ¼ã‚¸ã‚’ç ´æ£„
   ImageDestroy($im_in);
   ImageDestroy($im_out);
 }
-//gd‚Ìƒo[ƒWƒ‡ƒ“‚ğ’²‚×‚é
+//gdã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚’èª¿ã¹ã‚‹
 function get_gd_ver(){
   if(function_exists("gd_info")){
     $gdver=gd_info();
     $phpinfo=$gdver["GD Version"];
-  }else{ //php4.3.0–¢–—p
+  }else{ //php4.3.0æœªæº€ç”¨
     ob_start();
     phpinfo(8);
     $phpinfo=ob_get_contents();
@@ -740,7 +740,7 @@ function get_gd_ver(){
   $phpinfo=substr($phpinfo,$length);
   return $phpinfo;
 }
-//ƒtƒ@ƒCƒ‹md5ŒvZ php4.2.0–¢–—p
+//ãƒ•ã‚¡ã‚¤ãƒ«md5è¨ˆç®— php4.2.0æœªæº€ç”¨
 function md5_of_file($inFile) {
  if (file_exists($inFile)){
   if(function_exists('md5_file')){
@@ -754,21 +754,21 @@ function md5_of_file($inFile) {
  }else{
   return false;
 }}
-/* ƒeƒLƒXƒg®Œ` */
+/* ãƒ†ã‚­ã‚¹ãƒˆæ•´å½¢ */
 function CleanStr($str){
   global $admin;
-  $str = trim($str);//æ“ª‚Æ––”ö‚Ì‹ó”’œ‹
-  if (get_magic_quotes_gpc()) {//‚ğíœ
+  $str = trim($str);//å…ˆé ­ã¨æœ«å°¾ã®ç©ºç™½é™¤å»
+  if (get_magic_quotes_gpc()) {//ï¿¥ã‚’å‰Šé™¤
     $str = stripslashes($str);
   }
-  if($admin!=ADMIN_PASS){//ŠÇ—Ò‚Íƒ^ƒO‰Â”\
-    $str = htmlspecialchars($str);//ƒ^ƒO‚Á‹Ö~
-    $str = str_replace("&amp;", "&", $str);//“Áê•¶š
+  if($admin!=ADMIN_PASS){//ç®¡ç†è€…ã¯ã‚¿ã‚°å¯èƒ½
+    $str = htmlspecialchars($str);//ã‚¿ã‚°ã£ç¦æ­¢
+    $str = str_replace("&amp;", "&", $str);//ç‰¹æ®Šæ–‡å­—
   }
-  return str_replace(",", "&#44;", $str);//ƒJƒ“ƒ}‚ğ•ÏŠ·
+  return str_replace(",", "&#44;", $str);//ã‚«ãƒ³ãƒã‚’å¤‰æ›
 }
 
-//ƒe[ƒuƒ‹‚ª‚ ‚é‚©‚Ç‚¤‚© 0=‚È‚µ 1=‚ ‚è
+//ãƒ†ãƒ¼ãƒ–ãƒ«ãŒã‚ã‚‹ã‹ã©ã†ã‹ 0=ãªã— 1=ã‚ã‚Š
 function table_exist($table){
   $result = mysql_call("show tables like '$table'");
   if(!$result){return 0;}
@@ -777,7 +777,7 @@ function table_exist($table){
   return $a;
 }
 
-/* ƒ†[ƒU[íœ */
+/* ãƒ¦ãƒ¼ã‚¶ãƒ¼å‰Šé™¤ */
 function usrdel($no,$pwd){
   global $path,$pwdc,$onlyimgdel;
   $host = gethostbyaddr($_SERVER["REMOTE_ADDR"]);
@@ -792,51 +792,51 @@ function usrdel($no,$pwd){
 
   $flag = FALSE;
   for($i = 0; $i<$countdel; $i++){
-    if(!$result=mysql_call("select no,ext,tim,pwd,host from ".SQLLOG." where no=".$delno[$i])){echo "sql¸”s727<br>";}
+    if(!$result=mysql_call("select no,ext,tim,pwd,host from ".SQLLOG." where no=".$delno[$i])){echo "sqlå¤±æ•—727<br>";}
     else{
       while($resrow=mysql_fetch_row($result)){
         list($dno,$dext,$dtim,$dpass,$dhost)=$resrow;
         if(substr(md5($pwd),2,8) == $dpass || substr(md5($pwdc),2,8) == $dpass ||
             $dhost == $host || ADMIN_PASS==$pwd){
           $flag = TRUE;
-          $delfile = $path.$dtim.$dext;	//íœƒtƒ@ƒCƒ‹
+          $delfile = $path.$dtim.$dext;	//å‰Šé™¤ãƒ•ã‚¡ã‚¤ãƒ«
           if(!$onlyimgdel){
-            if(!mysql_call("delete from ".SQLLOG." where no=".$dno)){echo "sql¸”s736<br>";} //Šù‚ÉÁ‚¦‚Ä‚é‚©‚à
+            if(!mysql_call("delete from ".SQLLOG." where no=".$dno)){echo "sqlå¤±æ•—736<br>";} //æ—¢ã«æ¶ˆãˆã¦ã‚‹ã‹ã‚‚
           }
-          if(is_file($delfile)) unlink($delfile);//íœ
-          if(is_file(THUMB_DIR.$dtim.'s.jpg')) unlink(THUMB_DIR.$dtim.'s.jpg');//íœ
+          if(is_file($delfile)) unlink($delfile);//å‰Šé™¤
+          if(is_file(THUMB_DIR.$dtim.'s.jpg')) unlink(THUMB_DIR.$dtim.'s.jpg');//å‰Šé™¤
         }
       }
       mysql_free_result($result);
     }
   }
-  if(!$flag) error("ŠY“–‹L–‚ªŒ©‚Â‚©‚ç‚È‚¢‚©ƒpƒXƒ[ƒh‚ªŠÔˆá‚Á‚Ä‚¢‚Ü‚·");
+  if(!$flag) error("è©²å½“è¨˜äº‹ãŒè¦‹ã¤ã‹ã‚‰ãªã„ã‹ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ãŒé–“é•ã£ã¦ã„ã¾ã™");
 }
 
-/* ƒpƒX”FØ */
+/* ãƒ‘ã‚¹èªè¨¼ */
 function valid($pass){
-  if($pass && $pass != ADMIN_PASS) error("ƒpƒXƒ[ƒh‚ªˆá‚¢‚Ü‚·");
+  if($pass && $pass != ADMIN_PASS) error("ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ãŒé•ã„ã¾ã™");
 
   head($dat);
   echo $dat;
-  echo "[<a href=\"".PHP_SELF2."\">Œf¦”Â‚É–ß‚é</a>]\n";
-  echo "[<a href=\"".PHP_SELF."\">ƒƒO‚ğXV‚·‚é</a>]\n";
+  echo "[<a href=\"".PHP_SELF2."\">æ²ç¤ºæ¿ã«æˆ»ã‚‹</a>]\n";
+  echo "[<a href=\"".PHP_SELF."\">ãƒ­ã‚°ã‚’æ›´æ–°ã™ã‚‹</a>]\n";
   echo "<table width='100%'><tr><th bgcolor=#E08000>\n";
-  echo "<font color=#FFFFFF>ŠÇ—ƒ‚[ƒh</font>\n";
+  echo "<font color=#FFFFFF>ç®¡ç†ãƒ¢ãƒ¼ãƒ‰</font>\n";
   echo "</th></tr></table>\n";
   echo "<p><form action=\"".PHP_SELF."\" method=POST>\n";
-  // ƒƒOƒCƒ“ƒtƒH[ƒ€
+  // ãƒ­ã‚°ã‚¤ãƒ³ãƒ•ã‚©ãƒ¼ãƒ 
   if(!$pass){
-    echo "<center><input type=radio name=admin value=del checked>‹L–íœ ";
-    echo "<input type=radio name=admin value=post>ŠÇ—l“Še<p>";
+    echo "<center><input type=radio name=admin value=del checked>è¨˜äº‹å‰Šé™¤ ";
+    echo "<input type=radio name=admin value=post>ç®¡ç†äººæŠ•ç¨¿<p>";
     echo "<input type=hidden name=mode value=admin>\n";
     echo "<input type=password name=pass size=8>";
-    echo "<input type=submit value=\" ”FØ \"></form></center>\n";
+    echo "<input type=submit value=\" èªè¨¼ \"></form></center>\n";
     die("</body></html>");
   }
 }
 
-/* ŠÇ—Òíœ */
+/* ç®¡ç†è€…å‰Šé™¤ */
 function admindel($pass){
   global $path,$onlyimgdel;
   $delno = array(dummy);
@@ -846,50 +846,50 @@ function admindel($pass){
    if($item[1]=='delete'){array_push($delno,$item[0]);$delflag=TRUE;}
   }
   if($delflag){
-    if(!$result=mysql_call("select * from ".SQLLOG."")){echo "sql¸”s814<br>";}
+    if(!$result=mysql_call("select * from ".SQLLOG."")){echo "sqlå¤±æ•—814<br>";}
     $find = FALSE;
     while($row=mysql_fetch_row($result)){
       list($no,$now,$name,$email,$sub,$com,$host,$pwd,$ext,$w,$h,$tim,$time,$md5,$fsize,)=$row;
       if($onlyimgdel==on){
-        if(array_search($no,$delno)){//‰æ‘œ‚¾‚¯íœ
-          $delfile = $path.$tim.$ext;	//íœƒtƒ@ƒCƒ‹
-          if(is_file($delfile)) unlink($delfile);//íœ
-          if(is_file(THUMB_DIR.$tim.'s.jpg')) unlink(THUMB_DIR.$tim.'s.jpg');//íœ
+        if(array_search($no,$delno)){//ç”»åƒã ã‘å‰Šé™¤
+          $delfile = $path.$tim.$ext;	//å‰Šé™¤ãƒ•ã‚¡ã‚¤ãƒ«
+          if(is_file($delfile)) unlink($delfile);//å‰Šé™¤
+          if(is_file(THUMB_DIR.$tim.'s.jpg')) unlink(THUMB_DIR.$tim.'s.jpg');//å‰Šé™¤
         }
       }else{
-        if(array_search($no,$delno)){//íœ‚Ì‚Í‹ó‚É
+        if(array_search($no,$delno)){//å‰Šé™¤ã®æ™‚ã¯ç©ºã«
           $find = TRUE;
-          if(!mysql_call("delete from ".SQLLOG." where no=".$no)){echo "sql¸”s827<br>";}
-          $delfile = $path.$tim.$ext;	//íœƒtƒ@ƒCƒ‹
-          if(is_file($delfile)) unlink($delfile);//íœ
-          if(is_file(THUMB_DIR.$tim.'s.jpg')) unlink(THUMB_DIR.$tim.'s.jpg');//íœ
+          if(!mysql_call("delete from ".SQLLOG." where no=".$no)){echo "sqlå¤±æ•—827<br>";}
+          $delfile = $path.$tim.$ext;	//å‰Šé™¤ãƒ•ã‚¡ã‚¤ãƒ«
+          if(is_file($delfile)) unlink($delfile);//å‰Šé™¤
+          if(is_file(THUMB_DIR.$tim.'s.jpg')) unlink(THUMB_DIR.$tim.'s.jpg');//å‰Šé™¤
         }
       }
     }
     mysql_free_result($result);
-    if($find){//ƒƒOXV
+    if($find){//ãƒ­ã‚°æ›´æ–°
     }
   }
-  // íœ‰æ–Ê‚ğ•\¦
+  // å‰Šé™¤ç”»é¢ã‚’è¡¨ç¤º
   echo "<input type=hidden name=mode value=admin>\n";
   echo "<input type=hidden name=admin value=del>\n";
   echo "<input type=hidden name=pass value=\"$pass\">\n";
-  echo "<center><P>íœ‚µ‚½‚¢‹L–‚Ìƒ`ƒFƒbƒNƒ{ƒbƒNƒX‚Éƒ`ƒFƒbƒN‚ğ“ü‚êAíœƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚Ä‰º‚³‚¢B\n";
-  echo "<p><input type=submit value=\"íœ‚·‚é\">";
-  echo "<input type=reset value=\"ƒŠƒZƒbƒg\">";
-  echo "[<input type=checkbox name=onlyimgdel value=on><!--checked-->‰æ‘œ‚¾‚¯Á‚·]";
+  echo "<center><P>å‰Šé™¤ã—ãŸã„è¨˜äº‹ã®ãƒã‚§ãƒƒã‚¯ãƒœãƒƒã‚¯ã‚¹ã«ãƒã‚§ãƒƒã‚¯ã‚’å…¥ã‚Œã€å‰Šé™¤ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ã¦ä¸‹ã•ã„ã€‚\n";
+  echo "<p><input type=submit value=\"å‰Šé™¤ã™ã‚‹\">";
+  echo "<input type=reset value=\"ãƒªã‚»ãƒƒãƒˆ\">";
+  echo "[<input type=checkbox name=onlyimgdel value=on><!--checked-->ç”»åƒã ã‘æ¶ˆã™]";
   echo "<P><table border=1 cellspacing=0>\n";
-  echo "<tr bgcolor=6080f6><th>íœ</th><th>‹L–No</th><th>“Še“ú</th><th>‘è–¼</th>";
-  echo "<th>“ŠeÒ</th><th>ƒRƒƒ“ƒg</th><th>ƒzƒXƒg–¼</th><th>“Y•t<br>(Bytes)</th><th>md5</th><th>resto</th><th>tim</th><th>time</th>";
+  echo "<tr bgcolor=6080f6><th>å‰Šé™¤</th><th>è¨˜äº‹No</th><th>æŠ•ç¨¿æ—¥</th><th>é¡Œå</th>";
+  echo "<th>æŠ•ç¨¿è€…</th><th>ã‚³ãƒ¡ãƒ³ãƒˆ</th><th>ãƒ›ã‚¹ãƒˆå</th><th>æ·»ä»˜<br>(Bytes)</th><th>md5</th><th>resto</th><th>tim</th><th>time</th>";
   echo "</tr>\n";
 
-  if(!$result=mysql_call("select * from ".SQLLOG." order by no desc")){echo "sql¸”s864<br>";}
+  if(!$result=mysql_call("select * from ".SQLLOG." order by no desc")){echo "sqlå¤±æ•—864<br>";}
   $j=0;
   while($row=mysql_fetch_row($result)){
     $j++;
     $img_flag = FALSE;
     list($no,$now,$name,$email,$sub,$com,$host,$pwd,$ext,$w,$h,$tim,$time,$md5,$fsize,$root,$resto)=$row;
-    // ƒtƒH[ƒ}ƒbƒg
+    // ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
     $now=ereg_replace('.{2}/(.*)$','\1',$now);
     $now=ereg_replace('\(.*\)',' ',$now);
     if(strlen($name) > 10) $name = substr($name,0,9).".";
@@ -898,19 +898,19 @@ function admindel($pass){
     $com = str_replace("<br />"," ",$com);
     $com = htmlspecialchars($com);
     if(strlen($com) > 20) $com = substr($com,0,18) . ".";
-    // ‰æ‘œ‚ª‚ ‚é‚Æ‚«‚ÍƒŠƒ“ƒN
+    // ç”»åƒãŒã‚ã‚‹ã¨ãã¯ãƒªãƒ³ã‚¯
     if($ext && is_file($path.$tim.$ext)){
       $img_flag = TRUE;
       $clip = "<a href=\"".IMG_DIR.$tim.$ext."\" target=_blank>".$tim.$ext."</a><br>";
       $size = $fsize;
-      $all += $size;			//‡ŒvŒvZ
+      $all += $size;			//åˆè¨ˆè¨ˆç®—
       $md5= substr($md5,0,10);
     }else{
       $clip = "";
       $size = 0;
       $md5= "";
     }
-    $bg = ($j % 2) ? "d6d6f6" : "f6f6f6";//”wŒiF
+    $bg = ($j % 2) ? "d6d6f6" : "f6f6f6";//èƒŒæ™¯è‰²
 
     echo "<tr bgcolor=$bg><th><input type=checkbox name=\"$no\" value=delete></th>";
     echo "<th>$no</th><td><small>$now</small></td><td>$sub</td>";
@@ -920,11 +920,11 @@ function admindel($pass){
   }
   mysql_free_result($result);
 
-  echo "</table><p><input type=submit value=\"íœ‚·‚é$msg\">";
-  echo "<input type=reset value=\"ƒŠƒZƒbƒg\"></form>";
+  echo "</table><p><input type=submit value=\"å‰Šé™¤ã™ã‚‹$msg\">";
+  echo "<input type=reset value=\"ãƒªã‚»ãƒƒãƒˆ\"></form>";
 
   $all = (int)($all / 1024);
-  echo "y ‰æ‘œƒf[ƒ^‡Œv : <b>$all</b> KB z";
+  echo "ã€ ç”»åƒãƒ‡ãƒ¼ã‚¿åˆè¨ˆ : <b>$all</b> KB ã€‘";
   die("</center></body></html>");
 }
 
